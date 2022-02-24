@@ -3,7 +3,8 @@ const c = canvas.getContext('2d');
 const  CANVAS_WIDTH = canvas.width = 600; 
 const CANVAS_HEIGHT = canvas.height = 600; 
 
-class Ravens {
+let birds = []; 
+class Bird {
     constructor(){
         this.x; 
         this.y; 
