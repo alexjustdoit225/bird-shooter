@@ -7,6 +7,8 @@ const CANVAS_HEIGHT = canvas.height = 600;
 let birds = []; 
 class Bird {
     constructor(){
+        this.width = 100; 
+        this.height = 50;
         this.x = canvas.width; 
         this.y = Math.random() * (canvas.height - this.height); 
         this.directionX = Math.random() * 5 + 3; 
@@ -15,8 +17,8 @@ class Bird {
         this.spriteHeight; 
         this.frame = 0; 
         this.speed; 
-        this.width = 100; 
-        this.height = 50;
+        this.image = new Image(); 
+        this.image.src = "/assets/raven.png"; 
 
     }
     update(){
@@ -24,13 +26,18 @@ class Bird {
         this.frame++; 
     }
     draw(){
-        c.fillRect(this.x, this.y, this.width, this.height);
+        c.fillRect(this.x, this.y, this.width, this.height); 
+        // c.drawImage(this.x, this.y, this.width, this.height);
+        
     }
 }
-function animate(){
+
+const bird = new Bird(); 
+
+function animate(timestamp){
     c.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT); 
-    // bird.draw();
-    // bird.update(); 
+    bird.update(); 
+    bird.draw();
     requestAnimationFrame(animate); 
 }
 animate(); 
